@@ -1,0 +1,9 @@
+/.dockerignore
+/.git
+/.gitignore
+/.vscode
+/Dockerfile
+# /config.toml
+/shell.nix
+/target
+/rustfmt.toml

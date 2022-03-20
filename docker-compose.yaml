@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: barrier
+      MONGO_INITDB_ROOT_PASSWORD: barrier
+
+  backend:
+    build: ./barrier-backend
+    depends_on:
+      - mongo
+    restart: always
+
+  frontend:
+    build: ./barrier-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - 80:80
+

@@ -1,0 +1,30 @@
+jwt_key = "<GENERATE_JWT_KEY>"
+gate_server = "http://some-gate-server"
+mongo_uri = "mongodb://barrier:barrier@127.0.0.1:27017/barrier"
+dry_run = false
+log_level = "debug"
+
+[ldap]
+server = "ldap://127.0.0.1:389"
+bind = "uid=%(username),ou=People,dc=org,dc=ru"
+base = "ou=Groups,dc=org,dc=ru"
+filter = "(memberUid=%(username))"
+
+[gates]
+developers = [
+        "barrier_1",
+        "barrier_2",
+        "gate_1_1",
+        "door_1_1",
+        "door_exit_1_1",
+]
+
+
+[gate_mapping]
+barrier_1       = { id=1, description="Шлагбаум-1" }
+barrier_2       = { id=2, description="Шлагбаум-2", retries=6 }
+
+gate_1_1        = { id=3, description="Калитка(КПП)" }
+door_1_1        = { id=4, description="Дверь(ресепшн)" }
+
+door_exit_1_1   = { id=5, description="Вход(с парковки,цоколь)" }
